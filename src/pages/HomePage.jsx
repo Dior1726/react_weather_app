@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import CardWrapper from '../components/Card/CardWrapper'
 import { useDispatch, useSelector } from 'react-redux'
 import { getWeatherData } from '../features/counter/weatherSlice'
 import Spinner from '../components/Spinner/Spinner'
 
+const showClass = 'border border-gray-600 bg-transparent outline-none px-2 text-base transform translate-x-0 opacity-100 visible'
+const hideClass = 'border border-gray-600 bg-transparent outline-none px-2 text-base opacity-0 transform translate-x-5 invisible'
+
 const HomePage = () => {
   const dispatch = useDispatch()
+  const [showSearchInput, setShowSearchInput] = useState(false)
 
   useEffect(() => {
     dispatch(getWeatherData())
@@ -27,7 +31,13 @@ const HomePage = () => {
             :
               <>
                 <div className='flex justify-end'>
-                  <span className='flex justify-center items-center w-12 h-12 rounded-full bg-black bg-opacity-50'>
+                  <input 
+                    type="text" 
+                    className={showSearchInput ? showClass : hideClass} 
+                  />
+                  <span
+                    onClick={() => setShowSearchInput((prevState) => !prevState)}
+                    className='flex justify-center items-center w-12 h-12 rounded-full bg-black bg-opacity-50'>
                     <i className='bx bx-search text-2xl text-gray-400'></i>
                   </span>
                 </div>
