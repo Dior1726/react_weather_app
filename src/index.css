@@ -10,3 +10,28 @@
   background: rgb(0, 0, 0);
   background: linear-gradient(45deg, rgba(0, 0, 0, .5) 0%, rgba(11, 25, 20, .5) 50%, rgba(4, 15, 11, .5) 100%);
 }
+
+.defaultInput {
+  background: #151a1f;
+  outline: none;
+  transform: translateX(50px);
+  transition: .3s ease;
+  visibility: hidden;
+  opacity: 0;
+  width: 70%;
+  margin-right: 8px;
+}
+
+.showInput {
+  background: #151a1f;
+  outline: none;
+  transform: translateX(0px);
+  transition: .3s ease;
+  visibility: visible;
+  opacity: 100%;
+  padding: 10px 0 10px 10px;
+  width: 70%;
+  margin-right: 10px;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, .7);
+}

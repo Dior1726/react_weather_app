@@ -7,11 +7,11 @@ const initialState = {
   isLoading: true
 }
 
-export const getWeatherData = createAsyncThunk( 'weather/getWeatherData' , (country) => {
+export const getWeatherData = createAsyncThunk('weather/getWeatherData', (country) => {
   const options = {
     method: 'GET',
     url: 'https://weatherapi-com.p.rapidapi.com/current.json',
-    params: {q: country || 'Astana'},
+    params: { q: country || 'Astana' },
     headers: {
       'X-RapidAPI-Key': 'd820813cf8mshec4b5c617fcc56cp18a9fdjsn5a87eac11a3c',
       'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
@@ -41,11 +41,9 @@ const weatherSlice = createSlice({
       state.isLoading = false
       state.current = action.payload.current
       state.location = action.payload.location
-
-      console.log(state.current);
     },
     [getWeatherData.rejected]: (state, action) => {
-      console.log(action.payload);
+      alert(`city ${action.meta.arg} is not defined. Enter the true city name!`);
       state.isLoading = false
     }
   }
