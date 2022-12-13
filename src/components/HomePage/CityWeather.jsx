@@ -31,7 +31,11 @@ const CityWeather = () => {
           onClick={() => setShowSearchInput((prevState) => !prevState)}
           className='flex justify-center items-center w-12 h-12 rounded-full bg-black bg-opacity-50'
         >
-          <i className='bx bx-search text-2xl text-gray-400'></i>
+          {showSearchInput ? (
+            <i className='bx bx-x text-2xl text-gray-400'></i>
+          ) : (
+            <i className='bx bx-search text-2xl text-gray-400'></i>
+          )}
         </span>
       </div>
 

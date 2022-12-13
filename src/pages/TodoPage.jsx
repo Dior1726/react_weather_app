@@ -1,16 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import CreateTodo from '../components/TodoPage/CreateTodo'
+import TodoList from '../components/TodoPage/TodoList'
 
 const TodoPage = () => {
-  const { todos } = useSelector((state) => state.todo)
-  console.log(todos)
-
   return (
     <div>
-      <h1>Todos</h1>
-      {todos.map((todo) => (
-        <div key={todo.id}>Todo Text - {todo.text}</div>
-      ))}
+      <CreateTodo />
+      <TodoList />
     </div>
   )
 }

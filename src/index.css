@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+input,
+button {
+  transition: all 150ms ease;
+}
+
 .bg-main-black {
   background-color: #0e100f;
 }
@@ -29,7 +34,7 @@
   transition: .3s ease;
   visibility: visible;
   opacity: 100%;
-  padding: 10px 0 10px 10px;
+  padding: 10px 0px 10px 10px;
   width: 70%;
   margin-right: 10px;
   border-radius: 8px;
