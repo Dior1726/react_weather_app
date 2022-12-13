@@ -3,7 +3,7 @@ import Sidebar from './components/Sidebar/Sidebar'
 import { Routes, Route } from 'react-router-dom'
 
 import HomePage from './pages/HomePage'
-import MapPage from './pages/MapPage'
+import TodoPage from './pages/TodoPage'
 import CalendarPage from './pages/CalendarPage'
 import SettingsPage from './pages/SettingsPage'
 
@@ -19,8 +19,8 @@ function App() {
             element={<HomePage />}
           />
           <Route
-            path='/map'
-            element={<MapPage />}
+            path='/todo'
+            element={<TodoPage />}
           />
           <Route
             path='/calendar'

@@ -1,6 +1,6 @@
 import React from 'react'
 import CardWrapper from '../Card/CardWrapper'
-import LogoImg from '../../assets/weather.png'
+import LogoImg from '../../assets/plan.png'
 import { NavLink } from 'react-router-dom'
 
 const userImg =
@@ -9,13 +9,13 @@ const userImg =
 const MenuLinks = [
   {
     id: 1,
-    icon: 'bx bx-home',
+    icon: 'bx bx-cloud',
     link: '/',
   },
   {
     id: 2,
-    icon: 'bx bx-map-alt',
-    link: '/map',
+    icon: 'bx bx-list-check',
+    link: '/todo',
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const Sidebar = () => {
           className='w-10 h-10'
           alt=''
         />
-        <h3 className='text-gray-300 font-semibold'>Wearthry</h3>
+        <h3 className='text-gray-300 font-semibold'>Planner</h3>
       </div>
 
       <div className=' flex-grow p-5 flex flex-col justify-between'>

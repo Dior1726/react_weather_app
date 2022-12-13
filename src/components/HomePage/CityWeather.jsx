@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getWeatherData } from '../../features/weather/weatherSlice'
+import { getWeatherData } from '../../store/slices/weatherSlice'
 
 const CityWeather = () => {
   const dispatch = useDispatch()
@@ -40,7 +40,7 @@ const CityWeather = () => {
           <img
             className='w-full h-auto'
             src={current.condition.icon}
-            alt=''
+            alt='Icon'
           />
         </div>
         <div className='text-6xl font-medium mb-2'>

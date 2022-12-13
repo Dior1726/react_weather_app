@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import CardWrapper from '../components/Card/CardWrapper'
 import { useDispatch, useSelector } from 'react-redux'
-import { getWeatherData } from '../features/weather/weatherSlice'
+import { getWeatherData } from '../store/slices/weatherSlice'
 import Spinner from '../components/Spinner/Spinner'
 import CityWeather from '../components/HomePage/CityWeather'
 
@@ -15,12 +15,12 @@ const HomePage = () => {
 
   return (
     <>
-      <div className='flex items-stretch w-full gap-5'>
-        <CardWrapper className='p-5 w-1/3 flex flex-col'>
+      <div className='flex items-stretch flex-wrap md:flex-nowrap w-full gap-5'>
+        <CardWrapper className='w-full md:w-1/3 p-5 flex flex-col'>
           {isLoading ? <Spinner /> : <CityWeather />}
         </CardWrapper>
 
-        <CardWrapper className='p-5 w-2/3 flex flex-col'>
+        <CardWrapper className='w-full md:w-2/3 p-5 flex flex-col'>
           <div className='mb-2'>Todays Highlight</div>
 
           <div className='flex gap-3 w-full flex-grow'>
