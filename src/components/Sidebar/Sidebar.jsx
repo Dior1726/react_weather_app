@@ -18,14 +18,14 @@ const MenuLinks = [
     link: '/todo',
   },
   {
+    id: 4,
+    icon: 'bx bxl-github',
+    link: '/github',
+  },
+  {
     id: 3,
     icon: 'bx bx-calendar',
     link: '/calendar',
-  },
-  {
-    id: 4,
-    icon: 'bx bx-cog',
-    link: '/settings',
   },
 ]
 

@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import TodoPage from './pages/TodoPage'
 import CalendarPage from './pages/CalendarPage'
-import SettingsPage from './pages/SettingsPage'
+import GithubPage from './pages/GithubPage'
 
 function App() {
   return (
@@ -27,8 +27,8 @@ function App() {
             element={<CalendarPage />}
           />
           <Route
-            path='/settings'
-            element={<SettingsPage />}
+            path='/github'
+            element={<GithubPage />}
           />
         </Routes>
       </main>
