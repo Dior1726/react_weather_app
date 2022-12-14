@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getWeatherData } from '../../store/slices/weatherSlice'
+import { getWeatherData } from '../../store/actions'
 
 const CityWeather = () => {
   const dispatch = useDispatch()

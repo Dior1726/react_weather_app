@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import CardWrapper from '../components/Card/CardWrapper'
 import { useDispatch, useSelector } from 'react-redux'
-import { getWeatherData } from '../store/slices/weatherSlice'
+import { getWeatherData } from '../store/actions'
 import Spinner from '../components/Spinner/Spinner'
 import CityWeather from '../components/HomePage/CityWeather'
 
