@@ -6,8 +6,8 @@ const CityWeather = () => {
   const dispatch = useDispatch()
   const [showSearchInput, setShowSearchInput] = useState(false)
   const [city, setCity] = useState([''])
-  const current = useSelector((state) => state.weather.current)
-  const location = useSelector((state) => state.weather.location)
+  const { current } = useSelector((state) => state.weather)
+  const { location } = useSelector((state) => state.weather)
 
   return (
     <>

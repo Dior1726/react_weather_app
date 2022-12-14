@@ -18,10 +18,10 @@ const CreateTodo = () => {
   }
 
   return (
-    <div className='container mx-auto border-b border-gray-600 flex items-center justify-center py-5 gap-1'>
+    <div className='container mx-auto border-b border-gray-600 flex items-center justify-center py-5 gap-2'>
       <input
         type='text'
-        className='bg-[#151a1f] p-3 text-white font-medium text-lg text-opacity-70 rounded-md outline-none'
+        className='bg-[#151a1f] p-3 text-white font-medium text-lg text-opacity-70 rounded-lg outline-none'
         placeholder='Todo text'
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
@@ -31,7 +31,7 @@ const CreateTodo = () => {
       />
       <button
         onClick={createTodoHandler}
-        className='bg-gray-800 hover:shadow hover:shadow-gray-700 text-lg py-3 px-10 rounded-md'
+        className='bg-gray-800 hover:shadow hover:shadow-gray-700 text-lg py-3 px-6 rounded-lg'
       >
         <i className='bx bx-plus'></i>
       </button>

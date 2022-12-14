@@ -7,7 +7,7 @@ import CityWeather from '../components/HomePage/CityWeather'
 
 const HomePage = () => {
   const dispatch = useDispatch()
-  const isLoading = useSelector((state) => state.weather.isLoading)
+  const { isLoading } = useSelector((state) => state.weather)
 
   useEffect(() => {
     dispatch(getWeatherData())
