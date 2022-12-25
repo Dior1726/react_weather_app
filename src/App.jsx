@@ -11,7 +11,7 @@ function App() {
   return (
     <div className='absolute top-0 left-0 right-0 bottom-0 p-5 bg-main-black text-white flex gap-5'>
       <Sidebar />
-      <main className='flex-grow'>
+      <main className='flex-grow min-h-0 flex flex-col overflow-y-auto'>
         <Routes>
           <Route
             exact

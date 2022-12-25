@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {getWeatherData} from '../actions/'
+import { getWeatherData } from '../actions/'
 
 const initialState = {
   current: null,
   location: null,
   isLoading: true
 }
-
-
 
 const weatherSlice = createSlice({
   name: 'weather',

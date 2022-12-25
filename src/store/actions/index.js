@@ -22,3 +22,13 @@ export const getWeatherData = createAsyncThunk('weather/getWeatherData', (countr
       })
   })
 })
+
+export const getUserRepos = createAsyncThunk('github/getUserRepos', async ({currentPage, perPage}) => {
+  const options = {
+    method: 'GET',
+    url: `https://api.github.com/users/dior1726/repos?per_page=${perPage}&page=${currentPage}`,
+  }
+  
+  const response = await axios.request(options)
+  return response.data
+})
