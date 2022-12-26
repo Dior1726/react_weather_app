@@ -11,7 +11,7 @@ const RepoList = () => {
         <h1 className='text-center text-2xl mt-10 text-gray-400'>{error}</h1>
       )}
 
-      <div className='grid grid-cols-2 gap-5'>
+      <div className='grid grid-cols-2 gap-5 pb-5'>
         {repos.map((repo) => {
           return (
             <RepoCard
