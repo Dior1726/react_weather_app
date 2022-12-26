@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getWeatherData = createAsyncThunk('weather/getWeatherData', (country) => {
+export const getWeatherData = createAsyncThunk('weather/getWeatherData', async (country, {rejectWithValue}) => {
   const options = {
     method: 'GET',
     url: 'https://weatherapi-com.p.rapidapi.com/current.json',
@@ -12,15 +12,17 @@ export const getWeatherData = createAsyncThunk('weather/getWeatherData', (countr
     }
   };
 
-  return new Promise((resolve, reject) => {
-    axios.request(options)
-      .then((response) => {
-        resolve(response.data)
-      })
-      .catch((error) => {
-        reject(error)
-      })
-  })
+  try {
+    const response = await axios.request(options)
+
+    if (response.status !== 200) {
+      throw new Error('Something went wrong!')
+    }
+
+    return response.data
+  } catch (error) {
+    return rejectWithValue(error.message)
+  }
 })
 
 export const getUserRepos = createAsyncThunk('github/getUserRepos', async (_, {rejectWithValue}) => {

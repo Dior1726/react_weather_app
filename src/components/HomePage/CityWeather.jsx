@@ -6,8 +6,7 @@ const CityWeather = () => {
   const dispatch = useDispatch()
   const [showSearchInput, setShowSearchInput] = useState(false)
   const [city, setCity] = useState([''])
-  const { current } = useSelector((state) => state.weather)
-  const { location } = useSelector((state) => state.weather)
+  const { current, location, error } = useSelector((state) => state.weather)
 
   return (
     <>
@@ -39,41 +38,47 @@ const CityWeather = () => {
         </span>
       </div>
 
-      <div className='border-b border-gray-600'>
-        <div className='w-28 mb-3'>
-          <img
-            className='w-full h-auto'
-            src={current.condition.icon}
-            alt='Icon'
-          />
-        </div>
-        <div className='text-6xl font-medium mb-2'>
-          {current.temp_c.toFixed()} <span className='text-3xl'>°c</span>
-        </div>
-        <div className='text-gray-200 mb-3'>
-          <span> {current.condition.text} </span>
-          <span className='ml-10'>
-            {current.is_day ? (
-              <i className='bx bx-sun'></i>
-            ) : (
-              <i className='bx bx-moon'></i>
-            )}
-          </span>
-        </div>
-      </div>
+      {error && alert(error)}
 
-      <div className=' text-xs'>
-        <div className=' flex items-center gap-2 text-gray-300 mt-3'>
-          <i className='bx bxs-map text-xl'></i>
-          <span>
-            {location.name}, {location.country}
-          </span>
+      {current && (
+        <div className='border-b border-gray-600'>
+          <div className='w-28 mb-3'>
+            <img
+              className='w-full h-auto'
+              src={current.condition.icon}
+              alt='Icon'
+            />
+          </div>
+          <div className='text-6xl font-medium mb-2'>
+            {current.temp_c.toFixed()} <span className='text-3xl'>°c</span>
+          </div>
+          <div className='text-gray-200 mb-3'>
+            <span> {current.condition.text} </span>
+            <span className='ml-10'>
+              {current.is_day ? (
+                <i className='bx bx-sun'></i>
+              ) : (
+                <i className='bx bx-moon'></i>
+              )}
+            </span>
+          </div>
         </div>
-        <div className=' flex items-center gap-2 text-gray-300'>
-          <i className='bx bxs-calendar text-xl'></i>
-          <span> {location.localtime} </span>
+      )}
+
+      {location && (
+        <div className=' text-xs'>
+          <div className=' flex items-center gap-2 text-gray-300 mt-3'>
+            <i className='bx bxs-map text-xl'></i>
+            <span>
+              {location.name}, {location.country}
+            </span>
+          </div>
+          <div className=' flex items-center gap-2 text-gray-300'>
+            <i className='bx bxs-calendar text-xl'></i>
+            <span> {location.localtime} </span>
+          </div>
         </div>
-      </div>
+      )}
     </>
   )
 }

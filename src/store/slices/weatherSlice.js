@@ -4,7 +4,8 @@ import { getWeatherData } from '../actions/'
 const initialState = {
   current: null,
   location: null,
-  isLoading: true
+  isLoading: true,
+  error: null
 }
 
 const weatherSlice = createSlice({
@@ -19,10 +20,11 @@ const weatherSlice = createSlice({
       state.isLoading = false
       state.current = action.payload.current
       state.location = action.payload.location
+      state.error = null
     },
     [getWeatherData.rejected]: (state, action) => {
-      alert(`city ${action.meta.arg} is not defined. Enter the true city name!`);
       state.isLoading = false
+      state.error = action.payload
     }
   }
 })
