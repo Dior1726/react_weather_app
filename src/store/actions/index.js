@@ -43,3 +43,22 @@ export const getUserRepos = createAsyncThunk('github/getUserRepos', async (_, {r
     return rejectWithValue(error.message)
   }
 })
+
+export const getCharacters = createAsyncThunk('rickandmorty/getCharacters', async (_, {rejectWithValue}) => {
+  const options = {
+    method: "GET",
+    url: "https://rickandmortyapi.com/api/character"
+  }
+
+  try {
+    const response = await axios.request(options)
+
+    if (response.status !== 200) {
+      throw new Error('Something went wrong!')
+    }
+
+    return response.data
+  } catch (error) {
+    return rejectWithValue(error.message)
+  }
+})

@@ -4,8 +4,8 @@ import { Routes, Route } from 'react-router-dom'
 
 import HomePage from './pages/HomePage'
 import TodoPage from './pages/TodoPage'
-import CalendarPage from './pages/CalendarPage'
 import GithubPage from './pages/GithubPage'
+import RickAndMortyPage from './pages/RickAndMortyPage'
 
 function App() {
   return (
@@ -23,12 +23,12 @@ function App() {
             element={<TodoPage />}
           />
           <Route
-            path='/calendar'
-            element={<CalendarPage />}
-          />
-          <Route
             path='/github'
             element={<GithubPage />}
+          />
+          <Route
+            path='/rickandmorty'
+            element={<RickAndMortyPage />}
           />
         </Routes>
       </main>

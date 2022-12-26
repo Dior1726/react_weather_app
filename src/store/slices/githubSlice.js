@@ -18,6 +18,7 @@ const githubSlice = createSlice({
     [getUserRepos.fulfilled]: (state, action) => {
       state.isLoading = false
       state.repos = action.payload
+      state.error = null
     },
     [getUserRepos.rejected]: (state, action) => {
       state.isLoading = false

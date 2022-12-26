@@ -24,8 +24,8 @@ const MenuLinks = [
   },
   {
     id: 3,
-    icon: 'bx bx-calendar',
-    link: '/calendar',
+    icon: 'bx bx-camera-movie',
+    link: '/rickandmorty',
   },
 ]
 
