@@ -7,11 +7,11 @@ import { getUserRepos } from '../store/actions'
 
 const GithubPage = () => {
   const dispatch = useDispatch()
-  const { isLoading, currentPage } = useSelector((state) => state.github)
+  const { isLoading } = useSelector((state) => state.github)
 
   useEffect(() => {
-    dispatch(getUserRepos({ currentPage: 1, perPage: 10 }))
-  }, [currentPage])
+    dispatch(getUserRepos())
+  }, [])
 
   return (
     <div className='flex-grow min-h-0 flex flex-col container mx-auto'>

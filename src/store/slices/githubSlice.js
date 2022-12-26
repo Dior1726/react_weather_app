@@ -4,19 +4,13 @@ import { getUserRepos } from '../actions'
 const initialState = {
   isLoading: false,
   repos: [],
-  currentPage: 1,
-  perPage: 10,
-  totalCount: 0,
+  error: null
 }
 
 const githubSlice = createSlice({
   name: 'github',
   initialState,
-  reducers: {
-    setCurrentPage(state, action) {
-      state.currentPage = action.payload
-    }
-  },
+  reducers: {},
   extraReducers: {
     [getUserRepos.pending]: (state) => {
       state.isLoading = true
@@ -25,9 +19,9 @@ const githubSlice = createSlice({
       state.isLoading = false
       state.repos = action.payload
     },
-    [getUserRepos.rejected]: (state) => {
+    [getUserRepos.rejected]: (state, action) => {
       state.isLoading = false
-      alert('Something went wrong!')
+      state.error = action.payload
     }
   }
 })
