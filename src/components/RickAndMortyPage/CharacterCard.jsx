@@ -15,9 +15,23 @@ const CharacterCard = ({ character }) => {
         <h3 className='text-lg font-semibold mb-4 text-white'>
           {character.name}
         </h3>
-        <div>{character.origin.name}</div>
-        <div>
-          {character.species} / {character.gender} / ({character.status})
+        <div className='flex items-center gap-1'>
+          <i className='bx bx-planet text-lg'></i>
+          {character.origin.name}
+        </div>
+        <div className='flex items-center gap-2'>
+          <div>{character.species}</div>
+          <div>/</div>
+          <div className='flex items-center gap-1'>
+            <span
+              className={`w-3 h-3 block rounded-full 
+                ${character.status === 'Alive' && 'bg-green-500'} 
+                ${character.status === 'Dead' && 'bg-red-500'}
+                ${character.status === 'unknown' && 'bg-gray-300'}
+              `}
+            />
+            {character.status}
+          </div>
         </div>
       </div>
     </CardWrapper>

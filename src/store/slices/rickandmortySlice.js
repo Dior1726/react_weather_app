@@ -4,7 +4,8 @@ import { getCharacters } from '../actions'
 const initialState = {
   characters: [],
   isLoading: false,
-  error: null
+  error: null,
+  charactersCount: null
 }
 
 export const rickAndMortySlice = createSlice({
@@ -18,6 +19,7 @@ export const rickAndMortySlice = createSlice({
     [getCharacters.fulfilled]: (state, action) => {
       state.isLoading = false
       state.characters = action.payload.results
+      state.charactersCount = action.payload.info.count
       state.error = null
     },
     [getCharacters.rejected]: (state, action) => {
