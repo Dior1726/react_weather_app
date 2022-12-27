@@ -6,6 +6,9 @@ import HomePage from './pages/HomePage'
 import TodoPage from './pages/TodoPage'
 import GithubPage from './pages/GithubPage'
 import RickAndMortyPage from './pages/RickAndMortyPage'
+import CharacterPage from './pages/CharacterPage'
+import LocationsPage from './pages/LocationsPage'
+import EpisodesPage from './pages/EpisodesPage'
 
 function App() {
   return (
@@ -29,7 +32,20 @@ function App() {
           <Route
             path='/rickandmorty'
             element={<RickAndMortyPage />}
-          />
+          >
+            <Route
+              path=''
+              element={<CharacterPage />}
+            />
+            <Route
+              path='locations'
+              element={<LocationsPage />}
+            />
+            <Route
+              path='episodes'
+              element={<EpisodesPage />}
+            />
+          </Route>
         </Routes>
       </main>
     </div>
