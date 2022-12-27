@@ -24,7 +24,26 @@ const RickAndMortyPage = () => {
         </div>
         <div>
           <h2 className='text-2xl font-bold mb-5'>The Rick and Morty</h2>
-          <div className='text-gray-300'>Characters: {charactersCount}</div>
+          <div className='text-gray-300'>
+            <div className='flex items-center mb-2'>
+              <span className='min-w-[100px]'>Characters:</span>
+              <span className='font-semibold text-[#cf112b] p-2 bg-[#191919]  rounded-lg'>
+                {charactersCount}
+              </span>
+            </div>
+            <div className='flex items-center mb-2'>
+              <span className='min-w-[100px]'>Locations:</span>
+              <span className='font-semibold text-[#cf112b] p-2 bg-[#191919]  rounded-lg'>
+                {charactersCount}
+              </span>
+            </div>
+            <div className='flex items-center mb-2'>
+              <span className='min-w-[100px]'>Episodes:</span>
+              <span className='font-semibold text-[#cf112b] p-2 bg-[#191919]  rounded-lg'>
+                {charactersCount}
+              </span>
+            </div>
+          </div>
         </div>
         <div className='flex-1 flex items-end flex-col gap-5 uppercase text-[#cf112b] text-center font-semibold'>
           <NavLink
