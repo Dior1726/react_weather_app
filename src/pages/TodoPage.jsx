@@ -1,4 +1,3 @@
-import React from 'react'
 import CreateTodo from '../components/TodoPage/CreateTodo'
 import TodoList from '../components/TodoPage/TodoList'
 

@@ -1,65 +1,72 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios'
 
-export const getWeatherData = createAsyncThunk('weather/getWeatherData', async (country, {rejectWithValue}) => {
-  const options = {
-    method: 'GET',
-    url: 'https://weatherapi-com.p.rapidapi.com/current.json',
-    params: { q: country || 'Astana' },
-    headers: {
-      'X-RapidAPI-Key': 'd820813cf8mshec4b5c617fcc56cp18a9fdjsn5a87eac11a3c',
-      'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-    }
-  };
-
-  try {
-    const response = await axios.request(options)
-
-    if (response.status !== 200) {
-      throw new Error('Something went wrong!')
+export const getWeatherData = createAsyncThunk(
+  'weather/getWeatherData',
+  async (country, { rejectWithValue }) => {
+    const options = {
+      method: 'GET',
+      url: 'https://weatherapi-com.p.rapidapi.com/current.json',
+      params: { q: country || 'Astana' },
+      headers: {
+        'X-RapidAPI-Key': 'd820813cf8mshec4b5c617fcc56cp18a9fdjsn5a87eac11a3c',
+        'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
+      },
     }
 
-    return response.data
-  } catch (error) {
-    return rejectWithValue(error.message)
-  }
-})
+    try {
+      const response = await axios.request(options)
 
-export const getUserRepos = createAsyncThunk('github/getUserRepos', async (_, {rejectWithValue}) => {
-  const options = {
-    method: 'GET',
-    url: `https://api.github.com/users/dior1726/repos`,
-  }
-  
-  try {
-    const response = await axios.request(options)
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!')
+      }
 
-    if (response.status !== 200) {
-      throw new Error('Something went wrong!')
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
+export const getUserRepos = createAsyncThunk(
+  'github/getUserRepos',
+  async (_, { rejectWithValue }) => {
+    const options = {
+      method: 'GET',
+      url: `https://api.github.com/users/dior1726/repos`,
     }
 
-    return response.data
-  } catch (error) {
-    return rejectWithValue(error.message)
+    try {
+      const response = await axios.request(options)
+
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!')
+      }
+
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
   }
-})
+)
 
-export const getCharacters = createAsyncThunk('rickandmorty/getCharacters', async (_, {rejectWithValue}) => {
-  const options = {
-    method: "GET",
-    url: "https://rickandmortyapi.com/api/character"
-  }
-
-  try {
-    const response = await axios.request(options)
-
-    if (response.status !== 200) {
-      throw new Error('Something went wrong!')
+export const getCharacters = createAsyncThunk(
+  'rickandmorty/getCharacters',
+  async (page = 1, { rejectWithValue, dispatch }) => {
+    const options = {
+      method: 'GET',
+      url: `https://rickandmortyapi.com/api/character/?page=${page}`,
     }
 
-    console.log(response.data)
-    return response.data
-  } catch (error) {
-    return rejectWithValue(error.message)
+    try {
+      const response = await axios.request(options)
+
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!')
+      }
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
   }
-})
+)
