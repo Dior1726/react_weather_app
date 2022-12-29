@@ -7,12 +7,14 @@ import CardWrapper from '../components/Card/CardWrapper'
 import Spinner from '../components/Spinner/Spinner'
 import GridContainer from '../components/UI/GridContainer'
 import Pagination from '../components/RickAndMortyPage/Pagination'
+import { setCurrentPage } from '../store/slices/rickandmortySlice'
 
 const LocationsPage = () => {
   const dispatch = useDispatch()
   const { locations, isLoading } = useSelector((state) => state.rickandmorty)
 
   useEffect(() => {
+    dispatch(setCurrentPage(1))
     dispatch(getLocations())
   }, [])
 

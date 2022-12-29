@@ -7,12 +7,14 @@ import Spinner from '../components/Spinner/Spinner'
 import GridContainer from '../components/UI/GridContainer'
 import Pagination from '../components/RickAndMortyPage/Pagination'
 import CardWrapper from '../components/Card/CardWrapper'
+import { setCurrentPage } from '../store/slices/rickandmortySlice'
 
 const CharacterPage = () => {
   const dispatch = useDispatch()
   const { isLoading, characters } = useSelector((state) => state.rickandmorty)
 
   useEffect(() => {
+    dispatch(setCurrentPage(1))
     dispatch(getCharacters())
   }, [])
 
