@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const MainHeader = () => {
-  const { charactersCount } = useSelector((state) => state.rickandmorty)
+  const { counts } = useSelector((state) => state.rickandmorty)
 
   return (
     <CardWrapper className='p-5 mb-5 flex items-start gap-10'>
@@ -20,19 +20,19 @@ const MainHeader = () => {
           <div className='flex items-center mb-2'>
             <span className='min-w-[100px]'>Characters:</span>
             <span className='font-semibold text-[#cf112b] p-2 bg-[#191919]  rounded-lg'>
-              {charactersCount}
+              {counts?.characters}
             </span>
           </div>
           <div className='flex items-center mb-2'>
             <span className='min-w-[100px]'>Locations:</span>
             <span className='font-semibold text-[#cf112b] p-2 bg-[#191919]  rounded-lg'>
-              {charactersCount}
+              {counts?.locations || 0}
             </span>
           </div>
           <div className='flex items-center mb-2'>
             <span className='min-w-[100px]'>Episodes:</span>
             <span className='font-semibold text-[#cf112b] p-2 bg-[#191919]  rounded-lg'>
-              {charactersCount}
+              {counts?.episodes || 0}
             </span>
           </div>
         </div>

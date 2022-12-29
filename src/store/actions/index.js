@@ -70,3 +70,45 @@ export const getCharacters = createAsyncThunk(
     }
   }
 )
+
+export const getLocations = createAsyncThunk(
+  'rickandmorty/getLocations',
+  async (page = 1, { rejectWithValue, dispatch }) => {
+    const options = {
+      method: 'GET',
+      url: `https://rickandmortyapi.com/api/location/?page=${page}`,
+    }
+
+    try {
+      const response = await axios.request(options)
+
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!')
+      }
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
+export const getEpisodes = createAsyncThunk(
+  'rickandmorty/getEpisodes',
+  async (page = 1, { rejectWithValue, dispatch }) => {
+    const options = {
+      method: 'GET',
+      url: `https://rickandmortyapi.com/api/episode/?page=${page}`,
+    }
+
+    try {
+      const response = await axios.request(options)
+
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!')
+      }
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)

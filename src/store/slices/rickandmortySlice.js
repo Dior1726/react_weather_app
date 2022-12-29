@@ -1,13 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getCharacters } from '../actions'
+import { getCharacters, getEpisodes, getLocations } from '../actions'
 
 const initialState = {
   characters: [],
-  isLoading: false,
-  error: null,
-  charactersCount: null,
+  locations: [],
+  episodes: [],
+
+  counts: {},
   currentPage: 1,
   pages: null,
+
+  isLoading: false,
+  error: null,
 }
 
 export const rickAndMortySlice = createSlice({
@@ -25,11 +29,41 @@ export const rickAndMortySlice = createSlice({
     [getCharacters.fulfilled]: (state, action) => {
       state.isLoading = false
       state.characters = action.payload.results
-      state.charactersCount = action.payload.info.count
+      state.counts.characters = action.payload.info.count
       state.pages = action.payload.info.pages
       state.error = null
     },
     [getCharacters.rejected]: (state, action) => {
+      state.isLoading = false
+      state.error = action.payload
+    },
+
+    [getLocations.pending]: (state) => {
+      state.isLoading = true
+    },
+    [getLocations.fulfilled]: (state, action) => {
+      state.isLoading = false
+      state.locations = action.payload.results
+      state.counts.locations = action.payload.info.count
+      state.pages = action.payload.info.pages
+      state.error = null
+    },
+    [getLocations.rejected]: (state, action) => {
+      state.isLoading = false
+      state.error = action.payload
+    },
+
+    [getEpisodes.pending]: (state) => {
+      state.isLoading = true
+    },
+    [getEpisodes.fulfilled]: (state, action) => {
+      state.isLoading = false
+      state.episodes = action.payload.results
+      state.counts.episodes = action.payload.info.count
+      state.pages = action.payload.info.pages
+      state.error = null
+    },
+    [getEpisodes.rejected]: (state, action) => {
       state.isLoading = false
       state.error = action.payload
     },
