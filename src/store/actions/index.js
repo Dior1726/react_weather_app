@@ -50,9 +50,31 @@ export const getUserRepos = createAsyncThunk(
   }
 )
 
+export const getUser = createAsyncThunk(
+  'github/getUser',
+  async (_, { rejectWithValue }) => {
+    const options = {
+      method: 'GET',
+      url: `https://api.github.com/users/dior1726`,
+    }
+
+    try {
+      const response = await axios.request(options)
+
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!')
+      }
+
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
 export const getCharacters = createAsyncThunk(
   'rickandmorty/getCharacters',
-  async (page = 1, { rejectWithValue, dispatch }) => {
+  async (page = 1, { rejectWithValue }) => {
     const options = {
       method: 'GET',
       url: `https://rickandmortyapi.com/api/character/?page=${page}`,
@@ -73,7 +95,7 @@ export const getCharacters = createAsyncThunk(
 
 export const getLocations = createAsyncThunk(
   'rickandmorty/getLocations',
-  async (page = 1, { rejectWithValue, dispatch }) => {
+  async (page = 1, { rejectWithValue }) => {
     const options = {
       method: 'GET',
       url: `https://rickandmortyapi.com/api/location/?page=${page}`,
@@ -94,7 +116,7 @@ export const getLocations = createAsyncThunk(
 
 export const getEpisodes = createAsyncThunk(
   'rickandmorty/getEpisodes',
-  async (page = 1, { rejectWithValue, dispatch }) => {
+  async (page = 1, { rejectWithValue }) => {
     const options = {
       method: 'GET',
       url: `https://rickandmortyapi.com/api/episode/?page=${page}`,

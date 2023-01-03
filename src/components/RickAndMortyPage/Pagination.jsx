@@ -24,7 +24,7 @@ const Pagination = (props) => {
 
   return (
     <div className='flex items-center flex-wrap py-5 justify-center gap-3 text-[#cf112b] text-lg'>
-      {currentPage > pages + 2 && (
+      {currentPage > 2 && (
         <>
           <div
             className='px-2 cursor-pointer font-medium py-1 select-none rounded-md bg-[#191919]'
