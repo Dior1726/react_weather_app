@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getUserRepos } from '../actions'
+import { getUserRepos, getUser } from '../actions'
 
 const initialState = {
   isLoading: false,
+  user: null,
   repos: [],
-  error: null
+  error: null,
 }
 
 const githubSlice = createSlice({
@@ -23,8 +24,18 @@ const githubSlice = createSlice({
     [getUserRepos.rejected]: (state, action) => {
       state.isLoading = false
       state.error = action.payload
-    }
-  }
+    },
+
+    [getUser.fulfilled]: (state, action) => {
+      state.isLoading = false
+      state.user = action.payload
+      state.error = null
+    },
+    [getUser.rejected]: (state, action) => {
+      state.isLoading = false
+      state.error = action.payload
+    },
+  },
 })
 
 export const { setCurrentPage } = githubSlice.actions
