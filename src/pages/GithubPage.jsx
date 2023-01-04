@@ -11,11 +11,9 @@ const GithubPage = () => {
   const { isLoading, user } = useSelector((state) => state.github)
 
   useEffect(() => {
-    dispatch(getUserRepos())
     dispatch(getUser())
-  }, [dispatch])
-
-  console.log(user)
+    dispatch(getUserRepos())
+  }, [])
 
   return (
     <div className='flex-grow min-h-0 flex flex-col container mx-auto'>
@@ -23,21 +21,23 @@ const GithubPage = () => {
         <Spinner />
       ) : (
         <>
-          <CardWrapper className='p-5 mb-5 flex gap-10'>
-            <div className='w-60 h-60 rounded-[42px] overflow-hidden'>
-              <img
-                src={user.avatar_url}
-                alt={user.login}
-              />
-            </div>
-            <div className='flex-1'>
-              <h2 className='text-2xl font-semibold'>{user.name}</h2>
-              <div>@{user.login}</div>
+          {user && (
+            <CardWrapper className='p-5 mb-5 flex gap-10'>
+              <div className='w-60 h-60 rounded-[42px] overflow-hidden'>
+                <img
+                  src={user.avatar_url}
+                  alt={user.login}
+                />
+              </div>
+              <div className='flex-1'>
+                <h2 className='text-2xl font-semibold'>{user.name}</h2>
+                <div>@{user.login}</div>
 
-              <div className='mt-10'>Public repos: {user.public_repos}</div>
-              <div>Created: {user.created_at.slice(0, 10)}</div>
-            </div>
-          </CardWrapper>
+                <div className='mt-10'>Public repos: {user.public_repos}</div>
+                <div>Created: {user.created_at.slice(0, 10)}</div>
+              </div>
+            </CardWrapper>
+          )}
           <RepoList />
         </>
       )}

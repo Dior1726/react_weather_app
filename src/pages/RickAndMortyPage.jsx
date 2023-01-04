@@ -8,9 +8,9 @@ const RickAndMortyPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getCharacters())
-    dispatch(getLocations())
     dispatch(getEpisodes())
+    dispatch(getLocations())
+    dispatch(getCharacters())
   }, [dispatch])
 
   return (
