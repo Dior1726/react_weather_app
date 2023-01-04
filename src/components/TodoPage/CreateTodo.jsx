@@ -7,14 +7,18 @@ const CreateTodo = () => {
   const [todo, setTodo] = useState('')
 
   const createTodoHandler = () => {
-    const newTodo = {
-      id: Math.round(Math.random() * 10000),
-      text: todo,
-      isDone: false,
-    }
+    if (todo !== '') {
+      const newTodo = {
+        id: Math.round(Math.random() * 10000),
+        text: todo,
+        isDone: false,
+      }
 
-    dispatch(addTodo(newTodo))
-    setTodo('')
+      dispatch(addTodo(newTodo))
+      setTodo('')
+    } else {
+      alert('Enter something...')
+    }
   }
 
   return (
